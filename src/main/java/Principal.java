@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 
 
-public class Principal extends Application implements EventHandler<ActionEvent>{
+public class Principal extends Application {
 
     Button button;
     Button button2;
@@ -20,16 +20,21 @@ public class Principal extends Application implements EventHandler<ActionEvent>{
     @Override
     public void start(Stage primaryStage) throws Exception  {
         primaryStage.setTitle("Titulo da Janela");
-
         button = new Button();
-        button2 = new Button("Ou aqui");
         button.setText("Pressione aqui");
-        button2.setOnAction(this);
-        button.setOnAction(this);
+
+//        button.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                System.out.println("Testando");
+//            }
+//        });
+
+        button.setOnAction(event -> System.out.println("teste"));
 
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
-        layout.getChildren().add(button2);
+
 
         Scene scene = new Scene(layout, 300,250);
         primaryStage.setScene(scene);
@@ -37,14 +42,5 @@ public class Principal extends Application implements EventHandler<ActionEvent>{
     }
 
 
-    // Este metodo sempre deve ser chamado quando um Event é gerado
-    @Override
-    public void handle(ActionEvent event) {
-        if(event.getSource() == button){
-            System.out.println("Testando ");
-        }
-        if(event.getSource() == button2){
-            System.out.println("Testando botao 2");
-        }
-    }
+
 }
